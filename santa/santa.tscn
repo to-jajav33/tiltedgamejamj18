@@ -4,6 +4,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 66.5073
+height = 12.5559
 
 [node name="Santa" type="KinematicBody2D"]
 position = Vector2( 540, 283 )
@@ -23,8 +25,9 @@ offset = Vector2( 32, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 4, 4 )
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
 
 [node name="shootCooldown" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
