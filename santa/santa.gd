@@ -26,7 +26,9 @@ func _physics_process(delta):
 	if x > 0:
 		$body.flip_v = false
 		
-	move_and_slide(Vector2(x,y) * SPEED)
+	var move_dir = Vector2(x,y).normalized()
+	
+	move_and_slide(move_dir * SPEED)
 	
 	# Aiming - right stick
 	x = Input.get_joy_axis(0,2)
@@ -37,10 +39,15 @@ func _physics_process(delta):
 	if abs(y) <= DEADZONE:
 		y = 0
 
-	$gun.rotation = Vector2(1,0).angle_to(Vector2(x,y))
+	var aim_dir = Vector2(x,y).normalized()
+	if aim_dir.length() > 0:
+		$gun.rotation = Vector2(1,0).angle_to(aim_dir)
 	
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and $shootCooldown.is_stopped():
+		$shootCooldown.start()
+		
 		var b = Bullet.instance()
 		get_tree().current_scene.add_child(b)
-		b.global_position = global_position
+		b.global_position = global_position + Vector2(64,0).rotated($gun.rotation)
+		b.rotation = $gun.rotation
 		b.apply_impulse(Vector2(0,0), Vector2(1,0).rotated($gun.rotation) * BULLET_FORCE)

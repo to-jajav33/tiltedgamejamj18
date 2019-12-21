@@ -24,3 +24,7 @@ offset = Vector2( 32, 0 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 4, 4 )
+
+[node name="shootCooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
