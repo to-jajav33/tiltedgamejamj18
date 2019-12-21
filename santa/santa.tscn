@@ -15,11 +15,12 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="body" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="gun" type="Sprite" parent="."]
 position = Vector2( 0.355591, 0 )
-scale = Vector2( 1, 0.25 )
+scale = Vector2( 2, 0.5 )
 texture = ExtResource( 2 )
 offset = Vector2( 32, 0 )
 
