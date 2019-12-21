@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const SPEED = 350
+const SPEED = 640
 const DEADZONE = 0.2
-const BULLET_FORCE = 1000
+const BULLET_FORCE = 2500
 
 const Bullet = preload("res://santa/santabullet.tscn")
 
@@ -48,6 +48,6 @@ func _physics_process(delta):
 		
 		var b = Bullet.instance()
 		get_tree().current_scene.add_child(b)
-		b.global_position = global_position + Vector2(64,0).rotated($gun.rotation)
+		b.global_position = global_position + Vector2(128,0).rotated($gun.rotation)
 		b.rotation = $gun.rotation
 		b.apply_impulse(Vector2(0,0), Vector2(1,0).rotated($gun.rotation) * BULLET_FORCE)
