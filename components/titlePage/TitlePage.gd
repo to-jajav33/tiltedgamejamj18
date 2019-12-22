@@ -2,6 +2,8 @@ extends Node2D
 
 # Declare member variables here. Examples:
 var level1Class = preload("res://test/javi/levels/Level.tscn");
+var isSpawned = false;
+const Bullet = preload("res://santa/santabullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,10 +11,10 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event : InputEvent):
+	if (self.isSpawned):
+		return;
 	if !(event is InputEventMouseMotion):
-		var level1Inst = level1Class.instance();
-		get_parent().add_child(level1Inst);
-		queue_free();
+		get_tree().change_scene("res://test/javi/levels/Level.tscn");
 	return;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
