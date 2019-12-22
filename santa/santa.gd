@@ -88,3 +88,9 @@ func shoot_sfx():
 		new_sound.play()
 		print(shoot_sfx.size())
 		
+		
+func hurt(amount : int = 1):
+	$body.play("damage")
+	$Tween.interpolate_property($body, 'modulate', Color(1,1,1,1), Color(10,1,1,1), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+	$Tween.interpolate_property($body, 'modulate', Color(10,1,1,1), Color(1,1,1,1), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.01)
+	$Tween.start()
