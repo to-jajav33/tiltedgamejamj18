@@ -7,6 +7,9 @@ const BULLET_FORCE = 2500
 const Bullet = preload("res://santa/santabullet.tscn")
 onready var gun = $gun
 
+export var health : int = 3
+
+
 var shoot_sfx = []
 
 
@@ -87,6 +90,10 @@ func shoot_sfx():
 		
 		
 func hurt(amount : int = 1):
+	health -= amount
+	if health <= 0:
+		get_tree().change_scene("res://lose.tscn")
+		
 	$body.play("damage")
 	$Tween.interpolate_property($body, 'modulate', Color(1,1,1,1), Color(10,1,1,1), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.interpolate_property($body, 'modulate', Color(10,1,1,1), Color(1,1,1,1), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.01)
