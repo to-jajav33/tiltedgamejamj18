@@ -5,7 +5,6 @@ const DEADZONE = 0.2
 const BULLET_FORCE = 2500
 
 const Bullet = preload("res://santa/santabullet.tscn")
-onready var gun = $gun
 
 
 func _ready():
@@ -23,16 +22,13 @@ func _physics_process(delta):
 		y = 0
 
 	if x < 0:
-		$body.flip_h = true
+		$body.flip_v = true
 	if x > 0:
-		$body.flip_h = false
+		$body.flip_v = false
 		
 	var move_dir = Vector2(x,y).normalized()
-	if move_dir.length() > 0:
-		$body.play("stubborn")
-		move_and_slide(move_dir * SPEED)
-	else:
-		$body.play("stubborn_idle")
+	
+	move_and_slide(move_dir * SPEED)
 	
 	# Aiming - right stick
 	x = Input.get_joy_axis(0,2)
@@ -45,22 +41,13 @@ func _physics_process(delta):
 
 	var aim_dir = Vector2(x,y).normalized()
 	if aim_dir.length() > 0:
-		gun.rotation = Vector2(1,0).angle_to(aim_dir)
-		if x < 0 and not gun.flip_v:
-			gun.flip_v = true
-		if x > 0 and gun.flip_v:
-			gun.flip_v = false
+		$gun.rotation = Vector2(1,0).angle_to(aim_dir)
 	
 	if Input.is_action_pressed("shoot") and $shootCooldown.is_stopped():
 		$shootCooldown.start()
 		
 		var b = Bullet.instance()
 		get_tree().current_scene.add_child(b)
-		b.global_position = global_position + Vector2(256,0).rotated(gun.rotation)
-		b.rotation = gun.rotation
-		b.apply_impulse(Vector2(0,0), Vector2(1,0).rotated(gun.rotation) * BULLET_FORCE)
-		
-		if gun.flip_v:
-			$gun/AnimationPlayer.play("recoil_left")
-		else:
-			$gun/AnimationPlayer.play("recoil_right")
+		b.global_position = global_position + Vector2(128,0).rotated($gun.rotation)
+		b.rotation = $gun.rotation
+		b.apply_impulse(Vector2(0,0), Vector2(1,0).rotated($gun.rotation) * BULLET_FORCE)

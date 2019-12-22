@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://test/javi/tilesets/tileset1.tres" type="TileSet" id=1]
 [ext_resource path="res://santa/santa.tscn" type="PackedScene" id=2]
-[ext_resource path="res://components/key/Key.tscn" type="PackedScene" id=3]
-[ext_resource path="res://components/door/Door.tscn" type="PackedScene" id=4]
 
 [node name="TileMap" type="TileMap"]
 tile_set = ExtResource( 1 )
@@ -15,10 +13,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 editor/display_folded = true
 position = Vector2( 1115.15, 1044.26 )
 
-[node name="Key" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1690.44, 1216.23 )
-
-[node name="Door" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2387.82, 1157.65 )
+[node name="Camera2D" parent="Santa" index="3"]
+zoom = Vector2( 2, 2 )
 
 [editable path="Santa"]
