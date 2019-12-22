@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://boss/Boss.gd" type="Script" id=1]
 [ext_resource path="res://boss/textures/Elf_0001s_0001_Tony_Idle1.png" type="Texture" id=2]
@@ -36,9 +36,6 @@ animations = [ {
 "name": "walk",
 "speed": 5.0
 } ]
-
-[sub_resource type="CircleShape2D" id=3]
-radius = 2238.52
 
 [sub_resource type="Animation" id=7]
 resource_name = "attack"
@@ -127,14 +124,8 @@ frame = 1
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 3 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 7 )
 anims/awake = SubResource( 4 )
 anims/chase = SubResource( 5 )
 anims/idle = SubResource( 6 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
