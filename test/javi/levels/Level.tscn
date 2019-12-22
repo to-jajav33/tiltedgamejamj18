@@ -19,7 +19,7 @@ editor/display_folded = true
 position = Vector2( 1122.31, 1133.88 )
 
 [node name="body" parent="Santa" index="1"]
-frame = 1
+frame = 0
 
 [node name="Slasher" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
