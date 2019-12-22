@@ -27,6 +27,7 @@ func hurt(amount : int = 1):
 	if health <= 0:
 		alive = false
 		health = 0
+		get_tree().change_scene("res://win.tscn")
 		queue_free()
 
 
