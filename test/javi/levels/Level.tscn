@@ -18,12 +18,16 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 6, 0, 2, 6, 0, 3, 6, 0, 4, 6, 0, 5, 6, 0, 
 editor/display_folded = true
 position = Vector2( 1122.31, 1133.88 )
 
-[node name="body" parent="Santa" index="1"]
-frame = 0
-
 [node name="Slasher" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( 2185.12, 4015.89 )
+isHorizonatalMovement = false
+maxDistTraveled = 500.0
+speedOfTravel = 500.0
+
+[node name="Slasher1" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 4351.78, 7358.26 )
 isHorizonatalMovement = false
 maxDistTraveled = 500.0
 speedOfTravel = 500.0
@@ -76,5 +80,77 @@ position = Vector2( 1799.52, 28910.9 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 autoplay = true
+
+[node name="Slasher2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4336.36, 10313.4 )
+
+[node name="Slasher3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 5545.66, 10363.8 )
+
+[node name="Slasher4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 876.428, 11102.8 )
+
+[node name="Slasher5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 8484.93, 7726.81 )
+
+[node name="Slasher6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 6939.71, 2268.17 )
+
+[node name="Slasher7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 10013.3, 739.755 )
+
+[node name="Slasher8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 13574.1, 7256.53 )
+
+[node name="Slasher9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 13540.5, 8230.69 )
+
+[node name="Slasher10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 13792.4, 6517.51 )
+
+[node name="Slasher11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 14201.8, 10723.4 )
+
+[node name="Slasher12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 7095.92, 10609.2 )
+
+[node name="Slasher13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 8466.84, 9740.96 )
+
+[node name="Slasher14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 12247.7, 14187.8 )
+
+[node name="Slasher15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 10876.4, 17655.2 )
+
+[node name="Slasher16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4970.68, 17094.2 )
+
+[node name="Slasher17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4380.11, 21139.6 )
+
+[node name="Slasher18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 6447.11, 21198.7 )
+
+[node name="Slasher19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4439.17, 25864.2 )
+
+[node name="Slasher20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 6620.07, 26011.8 )
+
+[node name="Slasher21" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3126.32, 23454.8 )
+
+[node name="Slasher22" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1025.01, 23556 )
+
+[node name="Slasher23" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1961.74, 26644.7 )
+
+[node name="Slasher24" parent="." instance=ExtResource( 3 )]
+position = Vector2( 797.156, 17277.4 )
+
+[node name="Slasher25" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2214.91, 17429.3 )
 
 [editable path="Santa"]

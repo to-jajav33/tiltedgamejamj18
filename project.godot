@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Tilted Game Jam 18"
+run/main_scene="res://components/titlePage/TitlePage.tscn"
 config/icon="res://icon.png"
 
 [display]
