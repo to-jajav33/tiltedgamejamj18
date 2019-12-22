@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://test/javi/tilesets/tileset1.tres" type="TileSet" id=1]
 [ext_resource path="res://santa/santa.tscn" type="PackedScene" id=2]
+[ext_resource path="res://components/slasher/Slasher.tscn" type="PackedScene" id=3]
 
 [node name="TileMap" type="TileMap"]
 tile_set = ExtResource( 1 )
@@ -13,7 +14,11 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 editor/display_folded = true
 position = Vector2( 1115.15, 1044.26 )
 
-[node name="Camera2D" parent="Santa" index="3"]
-zoom = Vector2( 2, 2 )
+[node name="Slasher" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 2185.12, 4015.89 )
+isHorizonatalMovement = false
+maxDistTraveled = 2048.0
+speedOfTravel = 500.0
 
 [editable path="Santa"]

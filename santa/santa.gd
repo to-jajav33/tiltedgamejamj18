@@ -11,7 +11,7 @@ var shoot_sfx = []
 
 
 func _ready():
-	pass
+	pass;
 
 
 func _physics_process(delta):
