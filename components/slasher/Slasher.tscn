@@ -1,24 +1,55 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://components/slasher/Slasher.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://components/slasher/imgs/Elf_0002s_0000_Hoa_Idle1.png" type="Texture" id=2]
+[ext_resource path="res://components/slasher/imgs/Elf_0002s_0001_Hoa_Idle2.png" type="Texture" id=3]
+[ext_resource path="res://components/slasher/imgs/Elf_0002s_0006_Hoa_Attack4.png" type="Texture" id=4]
+[ext_resource path="res://components/slasher/imgs/Elf_0002s_0007_Hoa_Attack3.png" type="Texture" id=5]
+[ext_resource path="res://components/slasher/imgs/Elf_0002s_0008_Hoa_Attack2.png" type="Texture" id=6]
+[ext_resource path="res://components/slasher/imgs/Elf_0002s_0009_Hoa_Attack1.png" type="Texture" id=7]
+[ext_resource path="res://components/slasher/imgs/Elf_0002s_0002_Hoa_Walk1.png" type="Texture" id=8]
+[ext_resource path="res://components/slasher/imgs/Elf_0002s_0003_Hoa_Walk2.png" type="Texture" id=9]
+[ext_resource path="res://components/slasher/imgs/Elf_0002s_0004_Hoa_Walk3.png" type="Texture" id=10]
+[ext_resource path="res://components/slasher/imgs/Elf_0002s_0005_Hoa_Walk4.png" type="Texture" id=11]
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 128.0
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 65.2572
+height = 259.527
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+} ]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 2048.0
 
 [node name="Slasher" type="KinematicBody2D"]
+position = Vector2( 876.427, 303.064 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 9.83606, 46.9128 )
 shape = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 1, 0, 0, 1 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 4 )
+animation = "walk"
+frame = 3
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -27,5 +58,7 @@ shape = SubResource( 2 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
