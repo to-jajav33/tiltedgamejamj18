@@ -13,8 +13,8 @@
 [ext_resource path="res://components/slasher/imgs/Elf_0002s_0005_Hoa_Walk4.png" type="Texture" id=11]
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 59.6335
-height = 102.731
+radius = 65.2572
+height = 259.527
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -42,15 +42,14 @@ position = Vector2( 876.427, 303.064 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 4.2959, 11.4557 )
+position = Vector2( 9.83606, 46.9128 )
 shape = SubResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 4 )
-animation = "idle"
-frame = 1
-playing = true
+animation = "walk"
+frame = 3
 
 [node name="Area2D" type="Area2D" parent="."]
 
