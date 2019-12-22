@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://boss/Boss.gd" type="Script" id=1]
 [ext_resource path="res://boss/textures/Elf_0001s_0001_Tony_Idle1.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://boss/textures/Elf_0001s_0003_Tony_Walk2.png" type="Texture" id=9]
 [ext_resource path="res://boss/textures/Elf_0001s_0004_Tony_Walk3.png" type="Texture" id=10]
 [ext_resource path="res://boss/textures/Elf_0001s_0005_Tony_Walk4.png" type="Texture" id=11]
+[ext_resource path="res://boss/textures/ElfSlayer_sword.png" type="Texture" id=12]
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 242.771
@@ -71,7 +72,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=11]
 resource_name = "chase"
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -104,6 +105,22 @@ tracks/0/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "default"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( -2, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 634.021, 147.887 ), Vector2( -61.5332, 153.321 ), Vector2( 1313.27, 164.189 ) ]
+}
+
 [node name="Boss" type="KinematicBody2D"]
 position = Vector2( 1131.9, 537.243 )
 script = ExtResource( 1 )
@@ -120,12 +137,25 @@ shape = SubResource( 9 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
 animation = "attack"
-frame = 1
+frame = 2
+playing = true
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 7 )
 anims/awake = SubResource( 4 )
-anims/chase = SubResource( 5 )
+anims/chase = SubResource( 11 )
 anims/idle = SubResource( 6 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( -586.874, -81.5099 )
+
+[node name="ElfSlayer_sword" type="Sprite" parent="Node2D"]
+position = Vector2( -1.08441, 152.849 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/ElfSlayer_sword"]
+autoplay = "default"
+anims/default = SubResource( 10 )
