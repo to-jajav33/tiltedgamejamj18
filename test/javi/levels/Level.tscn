@@ -18,6 +18,9 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 6, 0, 2, 6, 0, 3, 6, 0, 4, 6, 0, 5, 6, 0, 
 editor/display_folded = true
 position = Vector2( 1122.31, 1133.88 )
 
+[node name="body" parent="Santa" index="1"]
+frame = 1
+
 [node name="Slasher" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( 2185.12, 4015.89 )
