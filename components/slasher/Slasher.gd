@@ -28,7 +28,9 @@ func _ready():
 	get_node("Area2D/CollisionShape2D").shape.radius = self.sizeOfHearing;
 	
 	set_physics_process(true);
-	pass # Replace with function body.
+	
+	$Sprite.play("idle")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -83,6 +85,24 @@ func _physics_process(delta):
 	if (self.__chaseTarget):
 		if (self.global_position.distance_to(self.__chaseTarget.global_position) < self.sizeOfHearing):
 			self.__chase_state = STATE_CHASE.CHASE;
+			
+	if __currVel.length() == 0:
+		$Sprite.play("idle")
+		
+	if __currVel.x < 0 and not $Sprite.flip_h:
+		$Sprite.play("walk")
+		$Sprite.flip_h = true
+		
+	if __currVel.x > 0 and $Sprite.flip_h:
+		$Sprite.play("walk")
+		$Sprite.flip_h = false
+		
+	for i in range(get_slide_count()):
+		$Sprite.play("attack")
+		var collision = get_slide_collision(i)
+		if collision.collider.has_method("hurt"):
+			collision.collider.hurt()
+		
 	return;
 
 
