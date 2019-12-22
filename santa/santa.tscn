@@ -117,7 +117,7 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 1
 frames = SubResource( 4 )
 animation = "stubborn"
-frame = 1
+frame = 2
 playing = true
 
 [node name="gun" type="Sprite" parent="."]
@@ -141,6 +141,10 @@ environment = SubResource( 7 )
 
 [node name="shootCooldown" type="Timer" parent="."]
 wait_time = 0.25
+one_shot = true
+
+[node name="hurtCooldown" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="sfxShoot" type="AudioStreamPlayer2D" parent="."]

@@ -90,6 +90,11 @@ func shoot_sfx():
 		
 		
 func hurt(amount : int = 1):
+	if not $hurtCooldown.is_stopped():
+		return
+		
+	$hurtCooldown.start()
+	
 	health -= amount
 	if health <= 0:
 		get_tree().change_scene("res://lose.tscn")
