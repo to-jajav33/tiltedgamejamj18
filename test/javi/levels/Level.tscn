@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://test/javi/tilesets/tileset1.tres" type="TileSet" id=1]
 [ext_resource path="res://santa/santa.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://boss/Boss.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/key/Key.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/door/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://test/javi/levels/audio/mamacita.ogg" type="AudioStream" id=7]
 
 [node name="TileMap" type="TileMap"]
 tile_set = ExtResource( 1 )
@@ -18,7 +19,7 @@ editor/display_folded = true
 position = Vector2( 1122.31, 1133.88 )
 
 [node name="body" parent="Santa" index="1"]
-frame = 0
+frame = 1
 
 [node name="Slasher" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -71,5 +72,9 @@ position = Vector2( 902.847, 16194.1 )
 
 [node name="Door6" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1799.52, 28910.9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
 
 [editable path="Santa"]
