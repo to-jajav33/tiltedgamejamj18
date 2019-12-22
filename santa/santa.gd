@@ -9,7 +9,7 @@ onready var gun = $gun
 
 
 func _ready():
-	pass
+	pass;
 
 
 func _physics_process(delta):

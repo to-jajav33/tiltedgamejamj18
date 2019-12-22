@@ -20,7 +20,7 @@ var __chaseTarget = null;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	__startPos = self.position;
+	self.__startPos = self.position;
 	get_node("Area2D/CollisionShape2D").shape.radius = self.sizeOfHearing;
 	
 	set_physics_process(true);
@@ -34,47 +34,64 @@ func _physics_process(delta):
 	self.__currVel = Vector2.ZERO;
 	var dir = Vector2.RIGHT;
 	if (self.__chase_state == STATE_CHASE.CHASE):
+		self.__currVel = Vector2.ZERO;
 		if (self.__chaseTarget):
 			var myRaycast = get_node("RayCast2D");
 			myRaycast.cast_to = to_local(self.__chaseTarget.global_position);
-			if (myRaycast.is_colliding() && myRaycast.get_collider() == self.__chaseTarget):
+			if (myRaycast.is_colliding() && (myRaycast.get_collider() == self.__chaseTarget)):
 				dir = self.global_position.direction_to(self.__chaseTarget.global_position);
-				self.__currVel = self.__currVel + (dir * speedOfTravel * delta);
-		
-		if (self.position.distance_to(self.__startPos) >= self.maxDistTraveled) || (!self.__chaseTarge):
-			self.__chase_state = STATE_CHASE.COMMING_BACK_HOME;
+				self.__currVel = self.__currVel + (dir * speedOfTravel);
+				if (self.position.distance_to(self.__startPos) > self.maxDistTraveled) || (!self.__chaseTarget):
+					self.__chase_state = STATE_CHASE.COMMING_BACK_HOME;
+				else:
+					self.__startPos = self.position;
+					move_and_slide(self.__currVel);
 	
 	if(self.__chase_state == STATE_CHASE.COMMING_BACK_HOME):
+		self.__currVel = Vector2.ZERO;
 		if (self.position != self.__startPos):
 			dir = self.position.direction_to(self.__startPos);
-			self.__currVel = self.__currVel + ((dir * __currentDirection) * speedOfTravel * delta);
-			
+			self.__currVel = self.__currVel + (dir * speedOfTravel);
+	
 			var futurePos : Vector2 = (self.position + self.__currVel);
-			if (futurePos.distance_to(self.__startPos) > (speedOfTravel * delta)):
-				move_and_slide(self.__currVel);
-			else:
+			if (self.position.distance_to(self.__startPos) < ((self.speedOfTravel * delta))):
+				self.__chase_state = STATE_CHASE.PATROLING;
 				self.position = self.__startPos;
-	else:
+			else:
+				if (futurePos.distance_to(self.__startPos) > self.maxDistTraveled) || (self.position.distance_to(self.__startPos) > self.maxDistTraveled):
+					move_and_slide(self.__currVel);
+		else:
+			self.__chase_state = STATE_CHASE.PATROLING;
+	
+	elif(self.__chase_state == STATE_CHASE.PATROLING):
+		self.__currVel = Vector2.ZERO;
 		if (self.isHorizonatalMovement):
 			dir = Vector2.RIGHT;
 		else:
 			dir = Vector2.DOWN;
 			
-		self.__currVel = self.__currVel + ((dir * __currentDirection) * speedOfTravel * delta);
+		self.__currVel = self.__currVel + ((dir * __currentDirection) * speedOfTravel);
 		move_and_slide(self.__currVel);
 		
 		if (self.position.distance_to(self.__startPos) >= self.maxDistTraveled):
 			self.__currentDirection = -(self.__currentDirection);
+	
+	if (self.__chaseTarget):
+		if (self.global_position.distance_to(self.__chaseTarget.global_position) < self.sizeOfHearing):
+			self.__chase_state = STATE_CHASE.CHASE;
 	return;
 
 
 func _on_Area2D_body_entered(body):
 	if (body.is_in_group("player")):
+		self.__chase_state = STATE_CHASE.CHASE;
 		self.__chaseTarget = body;
 	pass # Replace with function body.
 
 
 func _on_Area2D_body_exited(body):
 	if (body == self.__chaseTarget):
+		print("STOP EXIT");
+		self.__chase_state = STATE_CHASE.COMMING_BACK_HOME;
 		self.__chaseTarget = null;
 	pass # Replace with function body.

@@ -15,11 +15,10 @@ editor/display_folded = true
 position = Vector2( 1115.15, 1044.26 )
 
 [node name="Slasher" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 2185.12, 4015.89 )
 isHorizonatalMovement = false
-maxDistTraveled = 400.0
-speedOfTravel = 50000.0
+maxDistTraveled = 2048.0
+speedOfTravel = 500.0
 
 [editable path="Santa"]
-
-[editable path="Slasher"]
