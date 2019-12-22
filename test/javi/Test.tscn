@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://components/slasher/Slasher.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 512.0
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 969.154, 520.192 )
+
+[node name="Slasher" parent="." instance=ExtResource( 1 )]
+isHorizonatalMovement = false
+maxDistTraveled = 500.0
+speedOfTravel = 50000.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
