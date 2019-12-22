@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://santa/santabullet.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://santa/textures/Ornament-001.png" type="Texture" id=2]
+[ext_resource path="res://santa/textures/glow.png" type="Texture" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 33.586, 16.8467 )
+[sub_resource type="CircleShape2D" id=2]
+radius = 56.1987
+
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 1
 
 [node name="SantaBullet" type="RigidBody2D"]
 position = Vector2( 967.712, 396.43 )
@@ -25,9 +29,15 @@ script = ExtResource( 1 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.25 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="glow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.47451 )
+material = SubResource( 3 )
+scale = Vector2( 0.547218, 0.546585 )
+texture = ExtResource( 3 )
 [connection signal="body_entered" from="." to="." method="_on_SantaBullet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
