@@ -3,12 +3,10 @@
 [ext_resource path="res://components/key/Key.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 227.673
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 128, 128 )
 
-[node name="Key" type="Area2D" groups=[
-"keys",
-]]
+[node name="Key" type="Area2D"]
 position = Vector2( 1018.17, 507.691 )
 script = ExtResource( 1 )
 

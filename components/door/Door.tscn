@@ -7,11 +7,9 @@
 extents = Vector2( 64.536, 63.302 )
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 373.677
+radius = 162.89
 
-[node name="Door" type="StaticBody2D" groups=[
-"doors",
-]]
+[node name="Door" type="StaticBody2D"]
 position = Vector2( 1034.91, 437.953 )
 script = ExtResource( 1 )
 
