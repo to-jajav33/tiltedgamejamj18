@@ -5,6 +5,10 @@ export var isHorizonatalMovement : bool = true;
 export var maxDistTraveled : float = 10.0;
 export var speedOfTravel : float = 2.0;
 export var sizeOfHearing : float = 2048;
+export var health : int = 5;
+
+var alive = true
+
 
 enum STATE_CHASE {
 	PATROLING,
@@ -95,3 +99,18 @@ func _on_Area2D_body_exited(body):
 		self.__chase_state = STATE_CHASE.COMMING_BACK_HOME;
 		self.__chaseTarget = null;
 	pass # Replace with function body.
+
+
+func hurt(amount : int = 1):
+	if not alive:
+		return
+		
+	$Tween.interpolate_property($Sprite, 'modulate', Color(1,1,1,1), Color(10,10,10,1), 0.05, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+	$Tween.interpolate_property($Sprite, 'modulate', Color(10,10,10,1), Color(1,1,1,1), 0.05, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.01)
+	$Tween.start()
+
+	health -= amount
+	if health <= 0:
+		health = 0
+		alive = false
+		queue_free()
