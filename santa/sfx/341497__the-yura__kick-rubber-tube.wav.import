@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/341497__the-yura__kick-rubber-tube.wav-1dca7b0a184eb6e6a3724b3dfc51d00a.sample"
+
+[deps]
+
+source_file="res://santa/sfx/341497__the-yura__kick-rubber-tube.wav"
+dest_files=[ "res://.import/341497__the-yura__kick-rubber-tube.wav-1dca7b0a184eb6e6a3724b3dfc51d00a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

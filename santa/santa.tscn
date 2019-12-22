@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://santa/santa.gd" type="Script" id=1]
 [ext_resource path="res://santa/textures/Claus_0004_Damage_Idle.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://santa/textures/Claus_0009_Stubborn_Idle1.png" type="Texture" id=14]
 [ext_resource path="res://santa/textures/Claus_0008_Stubborn_Idle2.png" type="Texture" id=15]
 [ext_resource path="res://santa/textures/Claus_0000_Gun.png" type="Texture" id=16]
+[ext_resource path="res://santa/sfx/341497__the-yura__kick-rubber-tube.wav" type="AudioStream" id=17]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 138.722
@@ -122,3 +123,6 @@ smoothing_enabled = true
 [node name="shootCooldown" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+
+[node name="sfxShoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 17 )
