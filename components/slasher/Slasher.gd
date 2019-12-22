@@ -4,6 +4,7 @@ extends KinematicBody2D
 export var isHorizonatalMovement : bool = true;
 export var maxDistTraveled : float = 10.0;
 export var speedOfTravel : float = 2.0;
+export var sizeOfHearing : float = 2048;
 
 enum STATE_CHASE {
 	PATROLING,
@@ -20,6 +21,7 @@ var __chaseTarget = null;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	__startPos = self.position;
+	get_node("Area2D/CollisionShape2D").shape.radius = self.sizeOfHearing;
 	
 	set_physics_process(true);
 	pass # Replace with function body.
