@@ -24,11 +24,6 @@ func _physics_process(delta):
 	if abs(y) <= DEADZONE:
 		y = 0
 
-	if x < 0:
-		$body.flip_h = true
-	if x > 0:
-		$body.flip_h = false
-		
 	var move_dir = Vector2(x,y).normalized()
 	if move_dir.length() > 0:
 		$body.play("stubborn")
@@ -49,9 +44,11 @@ func _physics_process(delta):
 	if aim_dir.length() > 0:
 		gun.rotation = Vector2(1,0).angle_to(aim_dir)
 		if x < 0 and not gun.flip_v:
+			$body.flip_h = true
 			gun.flip_v = true
 		if x > 0 and gun.flip_v:
 			gun.flip_v = false
+			$body.flip_h = false
 	
 	if Input.is_action_pressed("shoot") and $shootCooldown.is_stopped():
 		$shootCooldown.start()
@@ -88,3 +85,9 @@ func shoot_sfx():
 		new_sound.play()
 		print(shoot_sfx.size())
 		
+		
+func hurt(amount : int = 1):
+	$body.play("damage")
+	$Tween.interpolate_property($body, 'modulate', Color(1,1,1,1), Color(10,1,1,1), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+	$Tween.interpolate_property($body, 'modulate', Color(10,1,1,1), Color(1,1,1,1), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.01)
+	$Tween.start()
