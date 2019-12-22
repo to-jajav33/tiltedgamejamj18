@@ -100,6 +100,6 @@ func hurt(amount : int = 1):
 		get_tree().change_scene("res://lose.tscn")
 		
 	$body.play("damage")
-	$Tween.interpolate_property($body, 'modulate', Color(1,1,1,1), Color(10,1,1,1), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
-	$Tween.interpolate_property($body, 'modulate', Color(10,1,1,1), Color(1,1,1,1), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.01)
+	$Tween.interpolate_property($body, 'modulate', Color(1,1,1,1), Color(10,10,10,1), 0.05, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+	$Tween.interpolate_property($body, 'modulate', Color(10,10,10,1), Color(1,1,1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.01)
 	$Tween.start()
