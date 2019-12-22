@@ -4,11 +4,11 @@
 [ext_resource path="res://components/titlePage/imgs/SantaSlays.png" type="Texture" id=2]
 [ext_resource path="res://components/titlePage/fonts/arial.ttf" type="DynamicFontData" id=3]
 
+[sub_resource type="StyleBoxEmpty" id=1]
+
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 use_mipmaps = true
 use_filter = true
@@ -43,9 +43,9 @@ margin_top = 692.0
 margin_right = 1136.0
 margin_bottom = 724.0
 rect_min_size = Vector2( 0, 32 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/normal_font = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0.164706, 0.164706, 0.164706, 1 )
 text = "PRESS ANY BUTTON"
 scroll_active = false

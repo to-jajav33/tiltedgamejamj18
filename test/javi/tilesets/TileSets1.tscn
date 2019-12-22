@@ -2,7 +2,7 @@
 
 [ext_resource path="res://test/javi/tilesets/imgs/ElfSlayer_bg-wall-wood.png" type="Texture" id=1]
 [ext_resource path="res://test/javi/tilesets/imgs/ElfSlayer_bg-wall-wood-h.png" type="Texture" id=2]
-[ext_resource path="res://test/javi/tilesets/imgs/tex_innerWall.png.png" type="Texture" id=3]
+[ext_resource path="res://test/javi/tilesets/imgs/Tree.png" type="Texture" id=3]
 [ext_resource path="res://test/javi/tilesets/imgs/floor1.png" type="Texture" id=4]
 [ext_resource path="res://test/javi/tilesets/imgs/floor2.png" type="Texture" id=5]
 [ext_resource path="res://test/javi/tilesets/imgs/floor3.png" type="Texture" id=6]

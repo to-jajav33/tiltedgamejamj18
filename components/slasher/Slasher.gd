@@ -115,7 +115,6 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	if (body == self.__chaseTarget):
-		print("STOP EXIT");
 		self.__chase_state = STATE_CHASE.COMMING_BACK_HOME;
 		self.__chaseTarget = null;
 	pass # Replace with function body.
